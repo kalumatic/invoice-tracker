@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Fakturica | Log in</title>
+</head>
+<body>
+<form action="#" th:action="@{/authenticate}" th:method="POST">
+
+    <h3>Please, Log in</h3>
+
+    <div th:if="${param.error}">
+        <p>
+            Invalid username or password. Please, try again.
+        </p>
+    </div>
+
+    <input type="text" placeholder="Username" name="username">
+    <br><br>
+    <input type="password" placeholder="Password" name="password">
+    <br><br>
+    <input type="submit" value="Log in">
+
+</form>
+</body>
+</html>

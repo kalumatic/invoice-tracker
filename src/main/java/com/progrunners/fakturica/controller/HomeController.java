@@ -1,9 +1,10 @@
 package com.progrunners.fakturica.controller;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-@org.springframework.stereotype.Controller
-public class Controller {
+@Controller
+public class HomeController {
 
     @GetMapping("/")
     public String showHome() {
