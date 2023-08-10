@@ -1,10 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Fakturica | Main</title>
 </head>
 <body>
+
+<p th:text="'Welcome, ' + ${user.username}"></p>
+
+<a th:href="@{/user/invoice-history}">List all invoices</a>
+<br>
+<a>Create new invoice</a>
+<br>
+<a>Update personal info</a>
 
 </body>
 </html>

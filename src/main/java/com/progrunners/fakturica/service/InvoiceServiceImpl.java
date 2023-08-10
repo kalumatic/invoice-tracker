@@ -3,9 +3,11 @@ package com.progrunners.fakturica.service;
 import com.progrunners.fakturica.entity.Invoice;
 import com.progrunners.fakturica.repository.InvoiceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class InvoiceServiceImpl implements InvoiceService {
 
     private InvoiceRepository invoiceRepository;

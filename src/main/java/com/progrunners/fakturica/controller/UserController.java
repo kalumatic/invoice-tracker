@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.security.Principal;
+
 @Controller
 @RequestMapping("/user")
 public class UserController
@@ -19,23 +21,22 @@ public class UserController
     private UserService userService;
 
     @Autowired
-    public UserController(InvoiceService invoiceService) {
+    public UserController(InvoiceService invoiceService, UserService userService) {
         this.invoiceService = invoiceService;
-    }
-
-    @Autowired
-    public UserController(UserService userService) {
         this.userService = userService;
     }
 
     @GetMapping("/main")
-    public String showMain(Model model) {
+    public String showMain(Principal principal, Model model) {
+        String username = principal.getName();
+
+        model.addAttribute("user", userService.findById(username));
 
         return "user/main";
     }
 
     @GetMapping("/invoice-history")
     public String showInvoiceHistory() {
-
+        return "user/invoice-history";
     }
 }
