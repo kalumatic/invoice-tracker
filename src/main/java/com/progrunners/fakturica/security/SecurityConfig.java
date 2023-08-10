@@ -25,10 +25,11 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(configurer -> configurer
                         .anyRequest().authenticated())
-                .formLogin(form -> form
-                        .loginPage("/login")
-                        .loginProcessingUrl("/authenticate")
-                        .permitAll()
+                        .formLogin(form -> form
+                            .loginPage("/login")
+                            .loginProcessingUrl("/authenticate")
+                                .defaultSuccessUrl("/user/main", true)
+                            .permitAll()
                 );
 
         return http.build();

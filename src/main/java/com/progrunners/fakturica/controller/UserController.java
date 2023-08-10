@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class UserController
 {
 
-    @GetMapping("/")
+    @GetMapping("/main")
     public String showMain() {
         return "user/main";
     }
