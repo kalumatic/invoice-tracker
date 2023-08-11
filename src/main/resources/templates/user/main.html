@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Fakturica | Main</title>
@@ -15,6 +15,9 @@
 <a th:href="@{/user/update-personal-info}">Update personal info</a>
 <br><br>
 
+<a sec:authorize="hasRole('ADMIN')" th:href="@{/admin/main}">Go to Admin Page</a>
+
+<br><br>
 <form action="#" th:action="@{/logout}" method="POST">
     <input type="submit" value="Log out">
 </form>
