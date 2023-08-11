@@ -2,7 +2,9 @@ package com.progrunners.fakturica.controller;
 
 import com.progrunners.fakturica.entity.Invoice;
 import com.progrunners.fakturica.entity.User;
+import com.progrunners.fakturica.entity.UserInfo;
 import com.progrunners.fakturica.service.InvoiceService;
+import com.progrunners.fakturica.service.UserInfoService;
 import com.progrunners.fakturica.service.UserService;
 import com.progrunners.fakturica.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +25,13 @@ public class UserController
 
     private InvoiceService invoiceService;
     private UserService userService;
+    private UserInfoService userInfoService;
 
     @Autowired
-    public UserController(InvoiceService invoiceService, UserService userService) {
+    public UserController(InvoiceService invoiceService, UserService userService, UserInfoService userInfoService) {
         this.invoiceService = invoiceService;
         this.userService = userService;
+        this.userInfoService = userInfoService;
     }
 
     @GetMapping("/main")
@@ -68,5 +72,23 @@ public class UserController
         invoiceService.save(invoice);
 
         return "redirect:/user/invoice-history";
+    }
+
+    @GetMapping("/update-personal-info")
+    public String showUpdatePersonalInfoForm(Principal principal, Model model) {
+        String username = principal.getName();
+
+        UserInfo userInfo = userInfoService.findById(username);
+
+        model.addAttribute("userInfo", userInfo);
+
+        return "/user/update-personal-info-form";
+    }
+
+    @PostMapping("/update-personal-info/save")
+    public String saveUserInfo(@ModelAttribute("userInfo") UserInfo userInfo) {
+        userInfoService.save(userInfo);
+
+        return "redirect:/user/main";
     }
 }
