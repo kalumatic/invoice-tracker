@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Fakturica - Admin | All Invoices</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        td, th {
+            border: 1px solid black;
+        }
+
+    </style>
+</head>
+<body>
+
+<h2>All invoices</h2>
+<table>
+    <thead>
+    <th>Invoice id</th>
+    <th>Username</th>
+    <th>Goods</th>
+    <th>Amount</th>
+    <th>Date</th>
+    <th>Price</th>
+    </thead>
+
+    <tbody>
+    <tr th:each="invoice : ${invoiceList}">
+        <td th:text="${invoice.id}"></td>
+        <td th:text="${invoice.username}"></td>
+        <td th:text="${invoice.goods}"></td>
+        <td th:text="${invoice.amount}"></td>
+        <td th:text="${invoice.date}"></td>
+        <td th:text="${invoice.price}"></td>
+    </tr>
+    </tbody>
+</table>
+<br><br>
+<a th:href="@{/admin/main}">Back to main page</a>
+
+
+</body>
+</html>

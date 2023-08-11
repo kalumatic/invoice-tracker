@@ -1,9 +1,9 @@
 package com.progrunners.fakturica.controller;
 
 import com.progrunners.fakturica.entity.Invoice;
-import com.progrunners.fakturica.entity.User;
+import com.progrunners.fakturica.entity.UserInfo;
 import com.progrunners.fakturica.service.InvoiceService;
-import com.progrunners.fakturica.service.UserService;
+import com.progrunners.fakturica.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,12 +17,12 @@ import java.util.List;
 public class AdminController {
 
     private InvoiceService invoiceService;
-    private UserService userService;
+    private UserInfoService userInfoService;
 
     @Autowired
-    public AdminController(InvoiceService invoiceService, UserService userService) {
+    public AdminController(InvoiceService invoiceService, UserInfoService userInfoService) {
         this.invoiceService = invoiceService;
-        this.userService = userService;
+        this.userInfoService = userInfoService;
     }
 
     @GetMapping("/main")
@@ -36,16 +36,16 @@ public class AdminController {
 
         model.addAttribute("invoiceList", invoiceList);
 
-        return "admin/invoices-list";
+        return "admin/invoice-list";
     }
 
     @GetMapping("/list-users")
     public String showUsersList(Model model) {
-        List<User> userList = userService.findAll();
+        List<UserInfo> userList = userInfoService.findAll();
 
         model.addAttribute("userList", userList);
 
-        return "admin/users-list";
+        return "admin/user-list";
     }
 
 }

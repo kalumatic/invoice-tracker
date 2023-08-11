@@ -5,6 +5,8 @@ import com.progrunners.fakturica.repository.UserInfoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserInfoServiceImpl implements UserInfoService {
     private UserInfoRepository userInfoRepository;
@@ -12,6 +14,11 @@ public class UserInfoServiceImpl implements UserInfoService {
     @Autowired
     public UserInfoServiceImpl(UserInfoRepository userInfoRepository) {
         this.userInfoRepository = userInfoRepository;
+    }
+
+    @Override
+    public List<UserInfo> findAll() {
+        return userInfoRepository.findAll();
     }
 
     @Override
