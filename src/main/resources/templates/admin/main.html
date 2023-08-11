@@ -1,10 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Fakturica - Admin | Main</title>
 </head>
 <body>
+<h2>Admin - Main</h2>
 
+<a th:href="@{/admin/list-users}">List all users</a>
+<br><br>
+<a th:href="@{/admin/list-invoices}">List all invoices</a>
+
+<br><br>
+<form action="#" th:action="@{/logout}" method="POST">
+    <input type="submit" value="Log out">
+</form>
 </body>
 </html>
