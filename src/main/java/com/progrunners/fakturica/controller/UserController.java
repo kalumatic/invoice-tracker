@@ -1,15 +1,15 @@
 package com.progrunners.fakturica.controller;
 
 import com.progrunners.fakturica.entity.Invoice;
-import com.progrunners.fakturica.entity.User;
 import com.progrunners.fakturica.entity.UserInfo;
 import com.progrunners.fakturica.service.InvoiceService;
 import com.progrunners.fakturica.service.UserInfoService;
 import com.progrunners.fakturica.service.UserService;
-import com.progrunners.fakturica.service.UserServiceImpl;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -68,9 +68,9 @@ public class UserController
     }
 
     @PostMapping("/create-new-invoice/save")
-    public String saveInvoice(@ModelAttribute("invoice") Invoice invoice) {
+    public String saveInvoice(@Valid @ModelAttribute("invoice") Invoice invoice, BindingResult bindingResult) {
         invoiceService.save(invoice);
-
+        
         return "redirect:/user/invoice-history";
     }
 

@@ -24,6 +24,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(configurer -> configurer
+                        .requestMatchers("/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated())
                 .formLogin(form -> form
                         .loginPage("/login")
@@ -31,6 +32,8 @@ public class SecurityConfig {
                         .defaultSuccessUrl("/user/main", true)
                         .permitAll())
                 .logout(logout -> logout.permitAll())
+                .exceptionHandling(configurer ->
+                        configurer.accessDeniedPage("/access-denied"))
         ;
 
         return http.build();

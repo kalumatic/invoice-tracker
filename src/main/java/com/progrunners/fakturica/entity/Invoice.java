@@ -1,6 +1,10 @@
 package com.progrunners.fakturica.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
+import java.util.Date;
 
 @Entity
 @Table(name = "invoices")
@@ -21,7 +25,7 @@ public class Invoice {
     private double amount;
 
     @Column(name = "invoice_date")
-    private String date;
+    private String date = null;
 
     @Column(name = "price")
     private double price;
