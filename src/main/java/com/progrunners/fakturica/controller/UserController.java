@@ -1,5 +1,6 @@
 package com.progrunners.fakturica.controller;
 
+import com.progrunners.fakturica.entity.Invoice;
 import com.progrunners.fakturica.entity.User;
 import com.progrunners.fakturica.service.InvoiceService;
 import com.progrunners.fakturica.service.UserService;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.security.Principal;
+import java.util.List;
 
 @Controller
 @RequestMapping("/user")
@@ -36,7 +38,13 @@ public class UserController
     }
 
     @GetMapping("/invoice-history")
-    public String showInvoiceHistory() {
+    public String showInvoiceHistory(Principal principal, Model model) {
+        String username = principal.getName();
+
+        List<Invoice> invoiceHistory = invoiceService.findByUsername(username);
+
+        model.addAttribute("invoices", invoiceHistory);
+
         return "user/invoice-history";
     }
 }
