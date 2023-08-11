@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create New Invoice</title>
+</head>
+<body>
+<h2>Create a new invoice:</h2>
+<form action="#" th:action="@{/user/create-new-invoice/save}" th:object="${invoice}" method="POST">
+    <input type="hidden" th:field="*{id}">
+    <br>
+    <br>
+    Username:
+    <br>
+    <input type="text" th:field="*{username}" th:value="${invoice.username}" readonly>
+    <br>
+    <br>
+    Goods:
+    <br>
+    <input type="text" th:field="*{goods}">
+    <br>
+    <br>
+    Amount:
+    <br>
+    <input type="number" step="0.01" th:field="*{amount}">
+    <br>
+    <br>
+    Date:
+    <br>
+    <input type="date" th:field="*{date}">
+    <br>
+    <br>
+    Price:
+    <br>
+    <input type="number" step="0.01" th:field="*{price}">
+    <br>
+    <br>
+    <input type="submit">
+</form>
+<br>
+<a th:href="@{/user/main}">Back to main page</a>
+</body>
+</html>
