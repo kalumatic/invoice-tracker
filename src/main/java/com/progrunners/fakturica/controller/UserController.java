@@ -88,7 +88,6 @@ public class UserController
     @PostMapping("/update-personal-info/save")
     public String saveUserInfo(@ModelAttribute("userInfo") UserInfo userInfo) {
         userInfoService.save(userInfo);
-
         return "redirect:/user/main";
     }
 }

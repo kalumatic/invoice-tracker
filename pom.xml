@@ -64,11 +64,9 @@
 			<artifactId>jakarta.validation-api</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>pdfbox-app-2.0.29</groupId>
-			<artifactId>pdfbox-app-2.0.29</artifactId>
-			<scope>system</scope>
-			<version>1.0</version>
-			<systemPath>${basedir}\src\lib\pdfbox-app-2.0.29.jar</systemPath>
+			<groupId>org.apache.pdfbox</groupId>
+			<artifactId>pdfbox</artifactId>
+			<version>3.0.0-RC1</version>
 		</dependency>
 	</dependencies>
 
