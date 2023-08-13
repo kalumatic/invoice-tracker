@@ -1,6 +1,6 @@
-package com.progrunners.fakturica.service;
+package com.progrunners.invoicetracker.service;
 
-import com.progrunners.fakturica.entity.Invoice;
+import com.progrunners.invoicetracker.entity.Invoice;
 
 import java.util.List;
 

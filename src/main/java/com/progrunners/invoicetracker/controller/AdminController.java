@@ -1,9 +1,9 @@
-package com.progrunners.fakturica.controller;
+package com.progrunners.invoicetracker.controller;
 
-import com.progrunners.fakturica.entity.Invoice;
-import com.progrunners.fakturica.entity.UserInfo;
-import com.progrunners.fakturica.service.InvoiceService;
-import com.progrunners.fakturica.service.UserInfoService;
+import com.progrunners.invoicetracker.entity.Invoice;
+import com.progrunners.invoicetracker.entity.UserInfo;
+import com.progrunners.invoicetracker.service.InvoiceService;
+import com.progrunners.invoicetracker.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,7 +36,7 @@ public class AdminController {
 
         model.addAttribute("invoiceList", invoiceList);
 
-        return "admin/invoice-list";
+        return "admin/invoic-list";
     }
 
     @GetMapping("/list-users")

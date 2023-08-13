@@ -1,13 +1,13 @@
-package com.progrunners.fakturica;
+package com.progrunners.invoicetracker;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class FakturicaApplication {
+public class InvoiceTrackerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FakturicaApplication.class, args);
+		SpringApplication.run(InvoiceTrackerApplication.class, args);
 	}
 
 }

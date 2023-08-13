@@ -1,10 +1,10 @@
-package com.progrunners.fakturica;
+package com.progrunners.invoicetracker;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class FakturicaApplicationTests {
+class InvoiceTrackerApplicationTests {
 
 	@Test
 	void contextLoads() {

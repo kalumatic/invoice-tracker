@@ -1,8 +1,7 @@
-package com.progrunners.fakturica.service;
+package com.progrunners.invoicetracker.service;
 
-import com.progrunners.fakturica.entity.User;
-import com.progrunners.fakturica.repository.UserRepository;
-import org.apache.catalina.realm.UserDatabaseRealm;
+import com.progrunners.invoicetracker.entity.User;
+import com.progrunners.invoicetracker.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

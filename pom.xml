@@ -9,7 +9,7 @@
 		<relativePath/>
 	</parent>
 	<groupId>com.progrunners</groupId>
-	<artifactId>fakturica</artifactId>
+	<artifactId>invoice-tracker</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>fakturica</name>
 	<description>Demo project for Spring Boot</description>

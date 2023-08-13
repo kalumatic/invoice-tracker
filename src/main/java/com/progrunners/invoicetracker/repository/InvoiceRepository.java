@@ -1,6 +1,6 @@
-package com.progrunners.fakturica.repository;
+package com.progrunners.invoicetracker.repository;
 
-import com.progrunners.fakturica.entity.Invoice;
+import com.progrunners.invoicetracker.entity.Invoice;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

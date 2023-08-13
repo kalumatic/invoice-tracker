@@ -1,4 +1,4 @@
-package com.progrunners.fakturica.controller;
+package com.progrunners.invoicetracker.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,7 +1,7 @@
-package com.progrunners.fakturica.service;
+package com.progrunners.invoicetracker.service;
 
 
-import com.progrunners.fakturica.entity.UserInfo;
+import com.progrunners.invoicetracker.entity.UserInfo;
 
 import java.util.List;
 

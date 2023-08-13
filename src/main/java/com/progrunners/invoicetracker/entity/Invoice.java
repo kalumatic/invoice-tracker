@@ -1,10 +1,6 @@
-package com.progrunners.fakturica.entity;
+package com.progrunners.invoicetracker.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-
-import java.util.Date;
 
 @Entity
 @Table(name = "invoices")

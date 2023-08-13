@@ -1,7 +1,7 @@
-package com.progrunners.fakturica.service;
+package com.progrunners.invoicetracker.service;
 
-import com.progrunners.fakturica.entity.Invoice;
-import com.progrunners.fakturica.repository.InvoiceRepository;
+import com.progrunners.invoicetracker.entity.Invoice;
+import com.progrunners.invoicetracker.repository.InvoiceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

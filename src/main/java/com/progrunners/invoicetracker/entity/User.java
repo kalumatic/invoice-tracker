@@ -1,4 +1,4 @@
-package com.progrunners.fakturica.entity;
+package com.progrunners.invoicetracker.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

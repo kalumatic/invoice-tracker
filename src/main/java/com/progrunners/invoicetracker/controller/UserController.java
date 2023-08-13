@@ -1,10 +1,10 @@
-package com.progrunners.fakturica.controller;
+package com.progrunners.invoicetracker.controller;
 
-import com.progrunners.fakturica.entity.Invoice;
-import com.progrunners.fakturica.entity.UserInfo;
-import com.progrunners.fakturica.service.InvoiceService;
-import com.progrunners.fakturica.service.UserInfoService;
-import com.progrunners.fakturica.service.UserService;
+import com.progrunners.invoicetracker.entity.Invoice;
+import com.progrunners.invoicetracker.entity.UserInfo;
+import com.progrunners.invoicetracker.service.InvoiceService;
+import com.progrunners.invoicetracker.service.UserInfoService;
+import com.progrunners.invoicetracker.service.UserService;
 import jakarta.validation.Valid;
 import org.apache.pdfbox.io.IOUtils;
 import org.apache.pdfbox.pdmodel.PDDocument;
@@ -18,13 +18,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.security.Principal;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeUnit;
 
 @Controller
 @RequestMapping("/user")
