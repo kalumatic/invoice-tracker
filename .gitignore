@@ -1,6 +1,8 @@
 target/*
 .idea/*
 
+*.pdf
+
 # Compiled class file
 *.class
 
