@@ -24,6 +24,7 @@
     <th>Amount</th>
     <th>Date</th>
     <th>Price</th>
+    <th></th>
     </thead>
 
     <tbody>
@@ -33,6 +34,8 @@
         <td th:text="${invoice.amount}"></td>
         <td th:text="${invoice.date}"></td>
         <td th:text="${invoice.price}"></td>
+        <td><a th:href="@{/user/create-pdf/{id}(id=${invoice.id})}">Create PDF</a>
+            <a th:href="@{/user/show-pdf/{id}(id=${invoice.id})}">Show PDF</a></td>
     </tr>
     </tbody>
 </table>

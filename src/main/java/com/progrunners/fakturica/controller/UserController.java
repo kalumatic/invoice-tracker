@@ -6,22 +6,29 @@ import com.progrunners.fakturica.service.InvoiceService;
 import com.progrunners.fakturica.service.UserInfoService;
 import com.progrunners.fakturica.service.UserService;
 import jakarta.validation.Valid;
+import org.apache.pdfbox.io.IOUtils;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.security.Principal;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
 
 @Controller
 @RequestMapping("/user")
-public class UserController
-{
+public class UserController {
 
     private InvoiceService invoiceService;
     private UserService userService;
@@ -64,13 +71,13 @@ public class UserController
 
         model.addAttribute("invoice", invoice);
 
-        return "/user/create-new-invoice-form";
+        return "user/create-new-invoice-form";
     }
 
     @PostMapping("/create-new-invoice/save")
     public String saveInvoice(@Valid @ModelAttribute("invoice") Invoice invoice, BindingResult bindingResult) {
         invoiceService.save(invoice);
-        
+
         return "redirect:/user/invoice-history";
     }
 
@@ -90,4 +97,65 @@ public class UserController
         userInfoService.save(userInfo);
         return "redirect:/user/main";
     }
+
+    @GetMapping("/create-pdf/{id}")
+    public String createPdf(@PathVariable("id") int id) throws IOException {
+        Invoice invoice = invoiceService.findById(id);
+
+        PDDocument document = new PDDocument();
+
+        PDPage page = new PDPage();
+        document.addPage(page);
+
+        PDPageContentStream contentStream = new PDPageContentStream(document, page, PDPageContentStream.AppendMode.APPEND, true);
+
+        contentStream.beginText();
+
+        contentStream.newLineAtOffset(25, 700);
+        contentStream.setLeading(14.5f);
+
+        contentStream.setFont(PDType1Font.COURIER, 16);
+        contentStream.showText("Invoice id: " + invoice.getId());
+        contentStream.newLine();
+        contentStream.newLine();
+
+        contentStream.showText("Username: " + invoice.getUsername());
+        contentStream.newLine();
+        contentStream.newLine();
+
+        contentStream.showText("Goods: " + invoice.getGoods());
+        contentStream.newLine();
+        contentStream.newLine();
+
+        contentStream.showText("Amount: " + invoice.getAmount());
+        contentStream.newLine();
+        contentStream.newLine();
+
+        contentStream.showText("Date : " + invoice.getDate());
+        contentStream.newLine();
+        contentStream.newLine();
+
+        contentStream.showText("Price: " + invoice.getPrice());
+
+        contentStream.endText();
+
+        contentStream.close();
+
+        document.save("src/main/resources/static/pdf/invoice" + invoice.getId() + ".pdf");
+        document.close();
+
+
+        return "redirect:/user/invoice-history";
+    }
+
+    @GetMapping(
+            value = "/show-pdf/{id}",
+            produces = MediaType.APPLICATION_PDF_VALUE
+    )
+    public @ResponseBody byte[] showPdf(@PathVariable("id") int id) throws IOException {
+         InputStream in = getClass()
+                    .getResourceAsStream("/static/pdf/invoice" + id + ".pdf");
+        return IOUtils.toByteArray(in);
+    }
+
 }
