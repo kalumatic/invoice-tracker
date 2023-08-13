@@ -1,4 +1,4 @@
-USE fakturica;
+USE invoice_tracker;
 
 DROP TABLE IF EXISTS authorities;
 DROP TABLE IF EXISTS users;
