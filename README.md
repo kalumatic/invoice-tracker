@@ -72,7 +72,7 @@ cd invoice-tracker
    |  nikola  |   client    |    USER     |
    |   tara   |   client    |    USER     |
 
-  or create a new user in the database, and for password user bcrypt
+  or create a new user in the database, and for password encryption, use bcrypt
 
 3. Create, manage, and export invoices as needed.  Admins can also view the list of all users and invoices.
 
