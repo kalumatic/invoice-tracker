@@ -32,7 +32,6 @@ Follow these steps to set up and run Invoice Tracker locally.
 ### Prerequisites
 
 - Java Development Kit (JDK), version 17 or higher
-- Maven
 - MySQL Database Server
 
 ### Installation
